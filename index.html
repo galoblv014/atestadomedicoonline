@@ -179,14 +179,27 @@
 
   <script>
     function calcularValor() {
-      const dataInicio = new Date(document.getElementById('dataInicio').value);
-      const dataFim = new Date(document.getElementById('dataFim').value);
-      const dias = (dataFim - dataInicio) / (1000 * 3600 * 24) + 1;
+  const dataInicioInput = document.getElementById('dataInicio');
+  const dataFimInput = document.getElementById('dataFim');
+  const valorTotal = document.getElementById('valorTotal');
 
-      let valor = 0;
-      if (dias <= 3) {
-        valor = 30;
-      } else {
+  const dataInicio = new Date(dataInicioInput.value);
+  const dataFim = new Date(dataFimInput.value);
+
+  if (isNaN(dataInicio) || isNaN(dataFim) || dataFim < dataInicio) {
+    valorTotal.innerText = 'Data inválida';
+    return;
+  }
+
+  const dias = (dataFim - dataInicio) / (1000 * 3600 * 24) + 1;
+  let valor = 0;
+  if (dias <= 3) {
+    valor = 30;
+  } else {
+    valor = dias * 15;
+  }
+  valorTotal.innerText = `R$ ${valor},00`;
+} else {
         valor = dias * 15;
       }
 

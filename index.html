@@ -177,7 +177,8 @@
 
       const nome = document.getElementById('nome').value;
       const motivo = document.getElementById('motivo').value;
-      const dias = document.getElementById('dias').value;
+      const dias = parseInt(document.getElementById('dias').value);
+      const valorTotal = dias * 30;
       const data = new Date(document.getElementById('data').value);
       const dataFormatada = data.toLocaleDateString('pt-BR');
 
@@ -186,7 +187,8 @@
         `Motivo: ${motivo}%0A` +
         `Dias de afastamento: ${dias}%0A` +
         `Data do atestado: ${dataFormatada}%0A` +
-        `%0AEnvie o valor do Pix para pagamento.`;
+        `Valor total: R$ ${valorTotal},00%0A` +
+        `%0AEnvie o Pix para pagamento.`;
 
       const numeroWhatsApp = '5511920624385';
       const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;

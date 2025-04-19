@@ -8,178 +8,106 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
-
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f2f4f8;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
       color: #333;
-      overflow-x: hidden;
     }
-
     header {
-      background: linear-gradient(135deg, #1976d2, #42a5f5);
+      background-color: #1976D2;
       color: white;
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
     }
-
-    header h1 {
-      font-size: 2.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      position: relative;
-    }
-
-    h2 {
-      color: #1976d2;
-      margin-bottom: 15px;
-    }
-
-    p, ul {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
     .btn-contato {
       display: inline-block;
-      margin-top: 30px;
-      padding: 14px 30px;
-      background-color: #1976d2;
-      color: white;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #1976D2;
+      border-radius: 5px;
+      font-weight: bold;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
     }
-
-    .btn-contato:hover {
-      background-color: #1565c0;
+    main {
+      padding: 30px 20px;
     }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #e0e0e0;
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 40px;
-    }
-
     .form-section {
-      margin-top: 50px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    input, select {
+    input, label {
+      display: block;
       width: 100%;
+      margin-bottom: 15px;
+    }
+    input {
       padding: 10px;
-      margin: 10px 0 20px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 5px;
     }
-
     .btn-gerar {
-      background-color: #43a047;
+      padding: 10px;
+      background-color: #1976D2;
       color: white;
-      padding: 12px 25px;
       border: none;
-      border-radius: 6px;
-      font-weight: 600;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      width: 100%;
+      font-weight: bold;
     }
-
-    .btn-gerar:hover {
-      background-color: #388e3c;
-    }
-
     .garantia {
-      background: #e8f5e9;
+      background-color: #e3f2fd;
       padding: 20px;
-      border-left: 6px solid #43a047;
-      margin-top: 40px;
       border-radius: 10px;
+      margin: 30px auto;
+      max-width: 700px;
+      text-align: center;
     }
-
     .depoimentos {
-      background: #f9f9f9;
-      border-left: 6px solid #ffb300;
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      background-color: #fff;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid #1976D2;
+      max-width: 700px;
+      margin: 15px auto;
+      border-radius: 6px;
     }
-
     .depoimentos span {
       display: block;
-      font-weight: bold;
-      margin-top: 10px;
+      margin-top: 5px;
+      font-style: italic;
     }
-
-    .depoimentos::after {
-      content: "⭐️⭐️⭐️⭐️⭐️";
-      display: block;
-      margin-top: 8px;
-      color: #ffb300;
-    }
-
     .depoimento-fixo {
       position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      max-width: 280px;
-      padding: 20px;
-      animation: flutuar 6s infinite alternate ease-in-out;
-      font-size: 0.95rem;
+      bottom: 10px;
+      right: 10px;
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #1976D2;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-
-    @keyframes flutuar {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #1976D2;
+      color: white;
+      margin-top: 30px;
     }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
+    @media screen and (max-width: 600px) {
+      header, main, .form-section, .garantia, .depoimentos {
+        padding: 15px;
       }
-
-      main {
-        margin: 20px;
-        padding: 20px;
-      }
-
-      .btn-contato {
-        width: 100%;
-        text-align: center;
-      }
-
-      .depoimento-fixo {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        max-width: none;
+      input, .btn-gerar {
+        font-size: 16px;
       }
     }
   </style>
@@ -188,121 +116,108 @@
   <header>
     <h1>Atestados Médicos Online</h1>
     <p>Comodidade, descrição e entrega rápida</p>
-    <a class="btn-contato" href="https://wa.me/5511920624385" target="_blank">Entrar em contato via WhatsApp</a>
+    <a class="btn-contato" href="#formAtestado">Solicitar Atestado</a>
   </header>
 
   <main>
-    <h2>🚑 Precisa de um atestado médico?</h2>
-    <p>Oferecemos atestados médicos com segurança, sigilo e rapidez. Atendimento 100% online com envio direto para seu WhatsApp.</p>
+    <div class="depoimentos">
+      <p>"Recebi meu atestado em menos de 15 minutos! Excelente atendimento."</p>
+      <span>— Mariana L.</span>
+      <p>Resposta: Agradecemos a confiança, Mariana! 💙</p>
+    </div>
+    <div class="depoimentos">
+      <p>"Serviço rápido e discreto, salvou meu dia! Super recomendo."</p>
+      <span>— Carlos M.</span>
+      <p>Resposta: Estamos sempre aqui para ajudar, Carlos! Obrigado 🙏</p>
+    </div>
+    <div class="depoimentos">
+      <p>"Funcionou certinho, atestado original e assinado. Entrega pontual."</p>
+      <span>— Juliana P.</span>
+      <p>Resposta: Juliana, sua confiança nos motiva! Obrigado 💙</p>
+    </div>
 
     <div class="garantia">
-      ✅ Todos os atestados são <strong>originais</strong>, <strong>assinados por médico</strong> registrado e entregues em até <strong>20 minutos</strong> após o pagamento via Pix.
+      <h2>Atestados 100% Originais</h2>
+      <p>Emitidos por médicos credenciados, com assinatura válida. Todos os atestados são enviados diretamente via WhatsApp em até 20 minutos após confirmação do pagamento.</p>
     </div>
 
-    <div class="depoimentos">
-      "Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br><span>— Fernanda S.</span>
-      <p>Resposta: Muito obrigado pela confiança, Fernanda! Estamos sempre à disposição 😊</p>
-    </div>
-    <div class="depoimentos">
-      "Atendimento rápido e discreto. Me salvou no dia da prova!"<br><span>— Lucas M.</span>
-      <p>Resposta: Ficamos felizes em poder ajudar, Lucas! Conte conosco sempre 🙏</p>
-    </div>
-    <div class="depoimentos">
-      "Funcionou perfeitamente, o atestado veio assinado e tudo certo."<br><span>— Juliana R.</span>
-      <p>Resposta: Agradecemos sua confiança, Juliana! É um prazer atender bem nossos clientes 💙</p>
-    </div>
-
-    <h2>📋 Como funciona:</h2>
-    <ul>
-      <li>Preencha os dados abaixo</li>
-      <li>Você será redirecionado para o WhatsApp</li>
-      <li>Lá você receberá o Pix para pagamento e o atestado</li>
-    </ul>
-
-    <div class="form-section">
-      <h2>📝 Solicitar Atestado</h2>
-      <form id="formAtestado">
-        <label for="nome">Nome do paciente:</label>
+    <section class="form-section" id="formAtestado">
+      <h2>Solicite seu Atestado</h2>
+      <form id="formulario">
+        <label>Nome Completo</label>
         <input type="text" id="nome" required>
 
-        <label for="motivo">Motivo do atestado:</label>
-        <input type="text" id="motivo" required>
+        <label>Data de Início do Atestado</label>
+        <input type="date" id="dataInicio" required>
 
-        <label for="dias">Dias de afastamento:</label>
-        <input type="number" id="dias" min="1" required>
+        <label>Data de Término do Atestado</label>
+        <input type="date" id="dataFim" required>
 
-        <label for="data">Data do atestado:</label>
-        <input type="date" id="data" required>
-
-        <label for="encerramento">Data de encerramento do afastamento:</label>
-        <input type="date" id="encerramento" required>
-
-        <label for="hospital">Nome de um hospital da cidade:</label>
+        <label>Nome de um Hospital da sua cidade (Público ou Privado)</label>
         <input type="text" id="hospital" required>
 
-        <label for="cidade">Nome da cidade:</label>
+        <label>Cidade</label>
         <input type="text" id="cidade" required>
 
-        <button type="submit" class="btn-gerar">Ir para o WhatsApp</button>
-      </form>
+        <p><strong>Total a pagar:</strong> <span id="valorTotal">R$ 0,00</span></p>
+
+        <button class="btn-gerar" id="botaoGerar" style="display:none">Ir para o WhatsApp</button>
+      <button class="btn-gerar" id="botaoGerar" style="display:none">Ir para o WhatsApp</button>
+        <a href="https://wa.me/5511920624385" target="_blank" style="display:block;margin-top:20px;text-align:center;background:#25D366;color:white;padding:12px;border-radius:8px;text-decoration:none;font-weight:bold;">Falar com Atendimento via WhatsApp</a>
+        </form>
+    </section>
+
+    <div class="depoimento-fixo">
+      "Recebi tudo direitinho, muito rápido!"
+      <br><strong>— Cliente Satisfeito</strong>
     </div>
   </main>
 
-  <div class="depoimento-fixo" id="depoimentoBox">
-    "Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br>
-    <span>— Fernanda S.</span>
-  </div>
-
   <footer>
-    &copy; 2025 - Atestados Médicos Online. Todos os direitos reservados.
+    © 2025 Clínica Saúde +. Todos os direitos reservados.
   </footer>
 
   <script>
-    const form = document.getElementById('formAtestado');
+    function calcularValor() {
+      const dataInicio = new Date(document.getElementById('dataInicio').value);
+      const dataFim = new Date(document.getElementById('dataFim').value);
+      const dias = (dataFim - dataInicio) / (1000 * 3600 * 24) + 1;
 
-    form.addEventListener('submit', function(e) {
+      let valor = 0;
+      if (dias <= 3) {
+        valor = 30;
+      } else {
+        valor = dias * 15;
+      }
+
+      document.getElementById('valorTotal').innerText = `R$ ${valor},00`;
+    }
+
+    const campos = ['nome', 'dataInicio', 'dataFim', 'hospital', 'cidade'];
+    campos.forEach(id => {
+      document.getElementById(id).addEventListener('input', verificaCampos);
+      document.getElementById(id).addEventListener('change', calcularValor);
+    });
+
+    function verificaCampos() {
+      const preenchidos = campos.every(id => document.getElementById(id).value.trim() !== '');
+      document.getElementById('botaoGerar').style.display = preenchidos ? 'inline-block' : 'none';
+    }
+
+    document.getElementById('botaoGerar').addEventListener('click', function(e) {
       e.preventDefault();
 
       const nome = document.getElementById('nome').value;
-      const motivo = document.getElementById('motivo').value;
-      const dias = parseInt(document.getElementById('dias').value);
-      const valorTotal = dias * 30;
-      const data = new Date(document.getElementById('data').value);
-      const encerramento = new Date(document.getElementById('encerramento').value);
+      const dataInicio = document.getElementById('dataInicio').value;
+      const dataFim = document.getElementById('dataFim').value;
       const hospital = document.getElementById('hospital').value;
       const cidade = document.getElementById('cidade').value;
+      const valorTexto = document.getElementById('valorTotal').innerText;
 
-      const dataFormatada = data.toLocaleDateString('pt-BR');
-      const encerramentoFormatado = encerramento.toLocaleDateString('pt-BR');
+      const msg = `Olá! Gostaria de solicitar um atestado médico com os seguintes dados:%0A%0ANome: ${nome}%0AInício: ${dataInicio}%0AFim: ${dataFim}%0AHospital: ${hospital}%0ACidade: ${cidade}%0AValor: ${valorTexto}`;
 
-      const mensagem = `Olá, gostaria de solicitar um atestado médico com os seguintes dados:%0A%0A` +
-        `Nome: ${nome}%0A` +
-        `Motivo: ${motivo}%0A` +
-        `Dias de afastamento: ${dias}%0A` +
-        `Data do atestado: ${dataFormatada}%0A` +
-        `Data de encerramento: ${encerramentoFormatado}%0A` +
-        `Hospital: ${hospital}%0A` +
-        `Cidade: ${cidade}%0A` +
-        `Valor total: R$ ${valorTotal},00%0A` +
-        `%0AEnvie o Pix para pagamento.`;
-
-      const numeroWhatsApp = '5511920624385';
-      const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
-
-      window.open(url, '_blank');
+      window.open(`https://wa.me/5511920624385?text=${msg}`, '_blank');
     });
-
-    const depoimentos = [
-      '"Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br><span>— Fernanda S.</span>',
-      '"Atendimento rápido e discreto. Me salvou no dia da prova!"<br><span>— Lucas M.</span>',
-      '"Funcionou perfeitamente, o atestado veio assinado e tudo certo."<br><span>— Juliana R.</span>'
-    ];
-    let index = 0;
-    setInterval(() => {
-      const box = document.getElementById('depoimentoBox');
-      index = (index + 1) % depoimentos.length;
-      box.innerHTML = depoimentos[index];
-    }, 5000);
   </script>
 </body>
 </html>

@@ -16,6 +16,7 @@
       font-family: 'Inter', sans-serif;
       background-color: #f2f4f8;
       color: #333;
+      overflow-x: hidden;
     }
 
     header {
@@ -41,6 +42,7 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: relative;
     }
 
     h2 {
@@ -110,6 +112,54 @@
       background-color: #388e3c;
     }
 
+    .garantia {
+      background: #e8f5e9;
+      padding: 20px;
+      border-left: 6px solid #43a047;
+      margin-top: 40px;
+      border-radius: 10px;
+    }
+
+    .depoimentos {
+      background: #f9f9f9;
+      border-left: 6px solid #ffb300;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .depoimentos span {
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .depoimentos::after {
+      content: "⭐️⭐️⭐️⭐️⭐️";
+      display: block;
+      margin-top: 8px;
+      color: #ffb300;
+    }
+
+    .depoimento-fixo {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      max-width: 280px;
+      padding: 20px;
+      animation: flutuar 6s infinite alternate ease-in-out;
+      font-size: 0.95rem;
+    }
+
+    @keyframes flutuar {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
@@ -124,19 +174,43 @@
         width: 100%;
         text-align: center;
       }
+
+      .depoimento-fixo {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        max-width: none;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Atestados Médicos Online</h1>
     <p>Comodidade, descrição e entrega rápida</p>
+    <a class="btn-contato" href="https://wa.me/5511920624385" target="_blank">Entrar em contato via WhatsApp</a>
   </header>
 
   <main>
     <h2>🚑 Precisa de um atestado médico?</h2>
     <p>Oferecemos atestados médicos com segurança, sigilo e rapidez. Atendimento 100% online com envio direto para seu WhatsApp.</p>
+
+    <div class="garantia">
+      ✅ Todos os atestados são <strong>originais</strong>, <strong>assinados por médico</strong> registrado e entregues em até <strong>20 minutos</strong> após o pagamento via Pix.
+    </div>
+
+    <div class="depoimentos">
+      "Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br><span>— Fernanda S.</span>
+      <p>Resposta: Muito obrigado pela confiança, Fernanda! Estamos sempre à disposição 😊</p>
+    </div>
+    <div class="depoimentos">
+      "Atendimento rápido e discreto. Me salvou no dia da prova!"<br><span>— Lucas M.</span>
+      <p>Resposta: Ficamos felizes em poder ajudar, Lucas! Conte conosco sempre 🙏</p>
+    </div>
+    <div class="depoimentos">
+      "Funcionou perfeitamente, o atestado veio assinado e tudo certo."<br><span>— Juliana R.</span>
+      <p>Resposta: Agradecemos sua confiança, Juliana! É um prazer atender bem nossos clientes 💙</p>
+    </div>
 
     <h2>📋 Como funciona:</h2>
     <ul>
@@ -160,10 +234,24 @@
         <label for="data">Data do atestado:</label>
         <input type="date" id="data" required>
 
+        <label for="encerramento">Data de encerramento do afastamento:</label>
+        <input type="date" id="encerramento" required>
+
+        <label for="hospital">Nome de um hospital da cidade:</label>
+        <input type="text" id="hospital" required>
+
+        <label for="cidade">Nome da cidade:</label>
+        <input type="text" id="cidade" required>
+
         <button type="submit" class="btn-gerar">Ir para o WhatsApp</button>
       </form>
     </div>
   </main>
+
+  <div class="depoimento-fixo" id="depoimentoBox">
+    "Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br>
+    <span>— Fernanda S.</span>
+  </div>
 
   <footer>
     &copy; 2025 - Atestados Médicos Online. Todos os direitos reservados.
@@ -180,13 +268,21 @@
       const dias = parseInt(document.getElementById('dias').value);
       const valorTotal = dias * 30;
       const data = new Date(document.getElementById('data').value);
+      const encerramento = new Date(document.getElementById('encerramento').value);
+      const hospital = document.getElementById('hospital').value;
+      const cidade = document.getElementById('cidade').value;
+
       const dataFormatada = data.toLocaleDateString('pt-BR');
+      const encerramentoFormatado = encerramento.toLocaleDateString('pt-BR');
 
       const mensagem = `Olá, gostaria de solicitar um atestado médico com os seguintes dados:%0A%0A` +
         `Nome: ${nome}%0A` +
         `Motivo: ${motivo}%0A` +
         `Dias de afastamento: ${dias}%0A` +
         `Data do atestado: ${dataFormatada}%0A` +
+        `Data de encerramento: ${encerramentoFormatado}%0A` +
+        `Hospital: ${hospital}%0A` +
+        `Cidade: ${cidade}%0A` +
         `Valor total: R$ ${valorTotal},00%0A` +
         `%0AEnvie o Pix para pagamento.`;
 
@@ -195,7 +291,18 @@
 
       window.open(url, '_blank');
     });
-  </script>
 
+    const depoimentos = [
+      '"Recebi em 15 minutos e pude justificar no trabalho. Recomendo demais!"<br><span>— Fernanda S.</span>',
+      '"Atendimento rápido e discreto. Me salvou no dia da prova!"<br><span>— Lucas M.</span>',
+      '"Funcionou perfeitamente, o atestado veio assinado e tudo certo."<br><span>— Juliana R.</span>'
+    ];
+    let index = 0;
+    setInterval(() => {
+      const box = document.getElementById('depoimentoBox');
+      index = (index + 1) % depoimentos.length;
+      box.innerHTML = depoimentos[index];
+    }, 5000);
+  </script>
 </body>
 </html>

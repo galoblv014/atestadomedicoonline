@@ -83,6 +83,33 @@
       margin-top: 40px;
     }
 
+    .form-section {
+      margin-top: 50px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn-gerar {
+      background-color: #43a047;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-gerar:hover {
+      background-color: #388e3c;
+    }
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
@@ -109,21 +136,64 @@
 
   <main>
     <h2>🚑 Precisa de um atestado médico?</h2>
-    <p>Oferecemos atestados médicos com segurança, sigilo e rapidez. Atendimento 100% online com envio direto para seu e-mail ou WhatsApp.</p>
+    <p>Oferecemos atestados médicos com segurança, sigilo e rapidez. Atendimento 100% online com envio direto para seu WhatsApp.</p>
 
     <h2>📋 Como funciona:</h2>
     <ul>
-      <li>Entre em contato pelo botão abaixo</li>
-      <li>Informe os dados necessários</li>
-      <li>Receba o atestado no mesmo dia</li>
+      <li>Preencha os dados abaixo</li>
+      <li>Você será redirecionado para o WhatsApp</li>
+      <li>Lá você receberá o Pix para pagamento e o atestado</li>
     </ul>
 
-    <a href="https://wa.me/seunumero" class="btn-contato">Falar pelo WhatsApp</a>
+    <div class="form-section">
+      <h2>📝 Solicitar Atestado</h2>
+      <form id="formAtestado">
+        <label for="nome">Nome do paciente:</label>
+        <input type="text" id="nome" required>
+
+        <label for="motivo">Motivo do atestado:</label>
+        <input type="text" id="motivo" required>
+
+        <label for="dias">Dias de afastamento:</label>
+        <input type="number" id="dias" min="1" required>
+
+        <label for="data">Data do atestado:</label>
+        <input type="date" id="data" required>
+
+        <button type="submit" class="btn-gerar">Ir para o WhatsApp</button>
+      </form>
+    </div>
   </main>
 
   <footer>
     &copy; 2025 - Atestados Médicos Online. Todos os direitos reservados.
   </footer>
+
+  <script>
+    const form = document.getElementById('formAtestado');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const motivo = document.getElementById('motivo').value;
+      const dias = document.getElementById('dias').value;
+      const data = new Date(document.getElementById('data').value);
+      const dataFormatada = data.toLocaleDateString('pt-BR');
+
+      const mensagem = `Olá, gostaria de solicitar um atestado médico com os seguintes dados:%0A%0A` +
+        `Nome: ${nome}%0A` +
+        `Motivo: ${motivo}%0A` +
+        `Dias de afastamento: ${dias}%0A` +
+        `Data do atestado: ${dataFormatada}%0A` +
+        `%0AEnvie o valor do Pix para pagamento.`;
+
+      const numeroWhatsApp = '5511920624385';
+      const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
 
 </body>
 </html>

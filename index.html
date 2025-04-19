@@ -148,10 +148,10 @@
         <input type="text" id="nome" required>
 
         <label>Data de Início do Atestado</label>
-        <input type="date" id="dataInicio" required>
+        <input type="date" id="dataInicio" required min="2024-01-01">
 
         <label>Data de Término do Atestado</label>
-        <input type="date" id="dataFim" required>
+        <input type="date" id="dataFim" required min="2024-01-01">
 
         <label>Nome de um Hospital da sua cidade (Público ou Privado)</label>
         <input type="text" id="hospital" required>
@@ -162,9 +162,8 @@
         <p><strong>Total a pagar:</strong> <span id="valorTotal">R$ 0,00</span></p>
 
         <button class="btn-gerar" id="botaoGerar" style="display:none">Ir para o WhatsApp</button>
-      <button class="btn-gerar" id="botaoGerar" style="display:none">Ir para o WhatsApp</button>
         <a href="https://wa.me/5511920624385" target="_blank" style="display:block;margin-top:20px;text-align:center;background:#25D366;color:white;padding:12px;border-radius:8px;text-decoration:none;font-weight:bold;">Falar com Atendimento via WhatsApp</a>
-        </form>
+      </form>
     </section>
 
     <div class="depoimento-fixo">
@@ -179,31 +178,21 @@
 
   <script>
     function calcularValor() {
-  const dataInicioInput = document.getElementById('dataInicio');
-  const dataFimInput = document.getElementById('dataFim');
-  const valorTotal = document.getElementById('valorTotal');
+      const dataInicioInput = document.getElementById('dataInicio');
+      const dataFimInput = document.getElementById('dataFim');
+      const valorTotal = document.getElementById('valorTotal');
 
-  const dataInicio = new Date(dataInicioInput.value);
-  const dataFim = new Date(dataFimInput.value);
+      const dataInicio = new Date(dataInicioInput.value);
+      const dataFim = new Date(dataFimInput.value);
 
-  if (isNaN(dataInicio) || isNaN(dataFim) || dataFim < dataInicio) {
-    valorTotal.innerText = 'Data inválida';
-    return;
-  }
-
-  const dias = (dataFim - dataInicio) / (1000 * 3600 * 24) + 1;
-  let valor = 0;
-  if (dias <= 3) {
-    valor = 30;
-  } else {
-    valor = dias * 15;
-  }
-  valorTotal.innerText = `R$ ${valor},00`;
-} else {
-        valor = dias * 15;
+      if (isNaN(dataInicio.getTime()) || isNaN(dataFim.getTime()) || dataFim < dataInicio) {
+        valorTotal.innerText = 'Data inválida';
+        return;
       }
 
-      document.getElementById('valorTotal').innerText = `R$ ${valor},00`;
+      const dias = Math.floor((dataFim - dataInicio) / (1000 * 3600 * 24)) + 1;
+      let valor = dias <= 3 ? 30 : dias * 15;
+      valorTotal.innerText = `R$ ${valor},00`;
     }
 
     const campos = ['nome', 'dataInicio', 'dataFim', 'hospital', 'cidade'];
